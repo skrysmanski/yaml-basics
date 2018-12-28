@@ -1,4 +1,4 @@
-# yaml
+# YAML
 
 For most software developers, JSON is easy to understand. YAML, on the other hand, is sometimes a little bit unintuitive (my guess: YAML has some ambiguities that JSON has not). This document tries to shed some light on those "problems".
 
@@ -82,4 +82,58 @@ Single quotes are useful for forcing a string when the first characters would ha
 - "Yet another\nstring"
 - '"Howdy!" he cried.' # Single quote use case 1
 - '# Not a ''comment''.' # Single quote use case 2
+```
+
+## Multiline Strings
+
+### Literal Style
+
+In **literal** style (`|`), newlines are preserved.
+
+```yml
+|
+  \//||\/||
+  // ||  ||__
+```
+
+becomes:
+
+    \//||\/||
+    // ||  ||__
+
+### Folded Style
+
+In **folded** style (`>`), newlines are replaced with spaces - unless it ends an empty or a more-indented line.
+
+```yml
+>
+  Mark McGwire's
+  year was crippled
+  by a knee injury.
+```
+
+becomes:
+
+    Mark McGwire's year was crippled by a knee injury.
+
+```yml
+>
+  Sammy Sosa completed another
+  fine season with great stats.
+
+    63 Home Runs
+    0.288 Batting Average
+
+  What a year!
+```
+
+becomes:
+
+```
+Sammy Sosa completed another fine season with great stats.
+
+    63 Home Runs
+    0.288 Batting Average
+
+What a year!
 ```
